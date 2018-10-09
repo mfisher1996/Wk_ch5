@@ -24,7 +24,7 @@ B. Lab
 	Delete the first, then last, then middle node. then print the list and
 	the node.
 {
-*/
+
 #include <iostream>
 #include "Wk_ch5.hpp"
 
@@ -85,7 +85,7 @@ void clearBuff(){
     cin.clear();
     cin.ignore(INT_MAX, '\n');
 }
-/*
+
 }
 
 
@@ -107,3 +107,50 @@ B. Lab
 		a. UML Diagram Pg 285
 
 */
+#include <iostream>
+#include <algorithm>
+#include <iterator>
+#include "Wk_ch5.hpp"
+
+using namespace std;
+
+int main(){
+	unorderedLinkedList<int> list;
+	int num;
+	cout << "Input a number to be insert into the list.\nInput -99 to end the list.\n";
+	cin >> num;
+	while(num != -99){
+		list.insertLast(num);
+		cin >> num;
+	}
+	cout << "List length: " << list.length() << endl;
+	cout << "Starting List: ";
+	linkedListIterator<int> listIt;
+	listIt=list.begin();
+	
+	for(int i=0; i<list.length();i++){
+		cout << *listIt << " ";
+		++listIt;
+	}
+	cout << endl;
+	list.deleteMin();
+	cout << "List after removing smallest element: ";
+	listIt=list.begin();
+	for(int i=0; i<list.length();i++){
+		cout << *listIt << " ";
+		++listIt;
+	}
+	cout << endl;
+	cout << "Input a number to be deleted.\n";
+	cin >> num;
+	list.deleteIn(num);
+	listIt=list.begin();
+	cout << "List after removing each " << num << ": ";
+	for(int i=0; i<list.length();i++){
+		cout << *listIt << " ";
+		++listIt;
+		}
+	cout << endl;
+	return 0;
+	
+}
